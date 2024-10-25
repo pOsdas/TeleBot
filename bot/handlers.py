@@ -126,7 +126,7 @@ async def receive_links_handler(message: Message, state: FSMContext):
 
 
 @dp.message(DownloadStates.waiting_for_link)
-async def download_video_handler(message: Message, state: FSMContext):
+async def download_video_handler(message: Message, state: FSMContext, cookies_path='cookies.txt'):
     url = message.text
     if not is_valid_url(url):
         await message.answer("Пожалуйста, введите корректную ссылку")
@@ -140,6 +140,7 @@ async def download_video_handler(message: Message, state: FSMContext):
         ydl_opts = {
             'format': 'best',
             'outtmpl': 'downloads/%(title)s.%(ext)s',
+            'cookiefile': cookies_path,
         }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:

@@ -31,7 +31,7 @@ def get_site_name(url: str) -> str:
     return parsed_url.netloc
 
 
-async def download_videos(message: Message, links):
+async def download_videos(message: Message, links, cookies_path='cookies.txt'):
     for url in links:
         site = get_site_name(url)
         save_to_csv([{"site": site, "download_more": "1", "download": "None"}])
@@ -39,6 +39,7 @@ async def download_videos(message: Message, links):
             ydl_opts = {
                 'format': 'best',
                 'outtmpl': 'downloads/%(title)s.%(ext)s',
+                'cookiefile': cookies_path,
             }
 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
