@@ -1,0 +1,6 @@
+/.idea/
+/.venv/
+data.csv
+download_history.db
+/downloads/
+cookies.txt
