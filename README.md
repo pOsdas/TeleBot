@@ -45,6 +45,8 @@ pip install -r requirements.txt
 2. Get your own bot token using [botfather](https://t.me/BotFather)
 3. Set your own limit for db records in [downloader.py](bot/downloader.py)
 
+4. When downloading videos, you may need a cookie (for example for YouTube). This cookie can be obtained using an extension for your browser
+Load information into `cookies.txt`
 ## License
 
 Distributed under MIT license.\
